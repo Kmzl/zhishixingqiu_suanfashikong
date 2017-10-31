@@ -19,15 +19,16 @@ def mergeSort(numList, firstIndex, endIndex):
         merge(numList,firstIndex, midIndex, endIndex)
 
 def uniqList(numList):
-    if len(numList) < 2:
+    if len(numList) == 0:
         return
-	mergeSort(numList, 0, len(numList))
-    result = [numList[0]]
-    for i in numList:
-        if i != result[-1]:
-            result.append(i)
-    return result
+    index = 0
+    while index + 1 < len(numList):
+        if numList[index] == numList[index + 1]:
+            del numList[index + 1]
+        else:
+            index += 1
             
 test = [6,1,3,4,6,5,3,5,1,2]
-test = uniqList(test)
+mergeSort(test, 0, len(test))
+uniqList(test)
 print(test)
