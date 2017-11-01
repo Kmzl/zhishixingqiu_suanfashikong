@@ -1,3 +1,5 @@
+import time
+import random
 def merge(numList, firstIndex, midIndex, endIndex):
     left = numList[firstIndex:midIndex]+[float("inf")]
     right = numList[midIndex:endIndex]+[float("inf")]
@@ -21,14 +23,21 @@ def mergeSort(numList, firstIndex, endIndex):
 def uniqList(numList):
     if len(numList) == 0:
         return
-    index = 0
-    while index + 1 < len(numList):
-        if numList[index] == numList[index + 1]:
-            del numList[index + 1]
-        else:
-            index += 1
+    index = 1
+    resultIndex = 0
+    while index < len(numList):
+        if numList[resultIndex] != numList[index]:
+            resultIndex += 1
+            numList[resultIndex] = numList[index]
+        index += 1
+    while len(numList) > resultIndex + 1:
+        numList.pop()
             
-test = [6,1,3,4,6,5,3,5,1,2]
+test = []
+for i in range(100000):
+    test.append(random.randint(0,100000))
+                
+start = time.clock()
 mergeSort(test, 0, len(test))
 uniqList(test)
-print(test)
+print(time.clock() - start)
