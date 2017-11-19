@@ -1,6 +1,6 @@
 import time
 import random
-RANGE = 7000000
+RANGE = 7900000
 def merge(numList, firstIndex, midIndex, endIndex):
     left = numList[firstIndex:midIndex]+[float("inf")]
     right = numList[midIndex:endIndex]+[float("inf")]
@@ -26,4 +26,17 @@ for i in range(RANGE):
     test.append(random.uniform(0,RANGE))
 start = time.clock()
 mergeSort(test, 0, len(test))
-print(time.clock() - start)
+print("test 1", time.clock() - start)
+
+test.clear()
+for i in range(RANGE):
+    test.append(random.uniform(0,RANGE))
+start = time.clock()
+mergeSort(test, 0, len(test))
+print("test 2", time.clock() - start)
+test.clear()
+for i in range(RANGE):
+    test.append(random.uniform(0,RANGE))
+start = time.clock()
+mergeSort(test, 0, len(test))
+print("test 3", time.clock() - start)
