@@ -32,12 +32,30 @@ def uniqList(numList):
         index += 1
     while len(numList) > resultIndex + 1:
         numList.pop()
+
+def uniqList1(numList):
+    if len(numList) == 0:
+        return
+    result ={}
+    left = 0
+    right = 1
+    while right < len(numList):
+        if numList[left] != numList[right]:
+            result[numList[left]] = right - left
+            left = right
+        right += 1
+    result[numList[left]] = right - left
+    print(result)
+    
             
 test = []
 for i in range(100000):
     test.append(random.randint(0,100000))
                 
-start = time.clock()
-mergeSort(test, 0, len(test))
-uniqList(test)
-print(time.clock() - start)
+#start = time.clock()
+#mergeSort(test, 0, len(test))
+#uniqList(test)
+#print(time.clock() - start)
+
+test = [1,1,2,3,4,4,4,5,6,7,7,7,7,7,8,8,9,10,10,10]
+uniqList1(test)
